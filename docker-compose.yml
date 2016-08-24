@@ -7,7 +7,8 @@ services:
       - "9990:9990"
     depends_on:
       - naming-service-postgres
-    entrypoint: ./wait-for-postgres.sh naming-service-postgres discs_names
+    entrypoint: /wait-for-it.sh
+    command: naming-service-postgres:5432 -- /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
     networks:
       - postgres
 
