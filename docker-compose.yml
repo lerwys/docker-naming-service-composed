@@ -2,6 +2,9 @@ version: '2'
 services:
   naming-service-wildfly:
     image: lerwys/docker-naming-service-wildfly
+    ports:
+      - "8080:8080"
+      - "9990:9990"
     depends_on:
       - naming-service-postgres
     networks:
@@ -9,6 +12,8 @@ services:
 
   naming-service-postgres:
     image: postgres:9.5
+    ports:
+      - "5432:5432"
     volumes:
       - naming-service-postgres-volume:/var/lib/postgresql/data
     networks:
