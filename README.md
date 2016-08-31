@@ -2,6 +2,10 @@
 
 ## Running instructions
 
+	> docker network create dockerrbacauthservicescomposed_postgres-rbac
+
+Setup network
+
 	docker-compose up -d
 
 The webpage should be available at:
