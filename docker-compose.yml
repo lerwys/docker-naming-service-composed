@@ -5,6 +5,7 @@ services:
     ports:
       - "8080:8080"
       - "9990:9990"
+    container_name: naming-service-wildfly
     depends_on:
       - naming-service-postgres
     entrypoint: /wait-for-it.sh
@@ -16,6 +17,7 @@ services:
     image: postgres:9.5
     ports:
       - "5432:5432"
+    container_name: naming-service-postgres
     volumes:
       - naming-service-postgres-volume:/var/lib/postgresql/data
     networks:
