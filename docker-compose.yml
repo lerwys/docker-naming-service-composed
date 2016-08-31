@@ -16,7 +16,7 @@ services:
   naming-service-postgres:
     image: postgres:9.5
     ports:
-      - "5432:5432"
+      - "5435:5432"
     container_name: naming-service-postgres
     volumes:
       - naming-service-postgres-volume:/var/lib/postgresql/data
