@@ -30,4 +30,5 @@ volumes:
 
 networks:
   postgres:
-    driver: bridge
+    external:
+      name: dockerrbacauthservicescomposed_postgres-rbac
