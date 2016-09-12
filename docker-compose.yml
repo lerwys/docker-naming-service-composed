@@ -31,4 +31,4 @@ volumes:
 networks:
   postgres:
     external:
-      name: dockerrbacauthservicescomposed_postgres-rbac
+      name: dockerrbaccomposed_postgres-rbac
