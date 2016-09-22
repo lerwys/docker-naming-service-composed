@@ -14,7 +14,7 @@ services:
       - postgres
 
   naming-service-postgres:
-      image: lnls/docker-naming-service-postgres
+    image: lnls/docker-naming-service-postgres
     ports:
       - "5432:5432"
     container_name: naming-service-postgres
