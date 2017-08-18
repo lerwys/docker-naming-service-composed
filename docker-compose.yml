@@ -1,7 +1,7 @@
 version: '2'
 services:
   naming-service-wildfly:
-    image: lnls/docker-naming-service-wildfly:3.3.2-1
+    image: lnls/docker-naming-service-wildfly:3.3.2-2
     ports:
       - "8089:8080"
       - "9999:9990"
@@ -11,13 +11,17 @@ services:
     dns:
         - 10.0.0.71
         - 10.0.0.72
+    extra_hosts:
+      - "sirius-rbac.lnls.br:172.18.0.3"
+      - "sirius-rbac-auth.lnls.br:172.18.0.4"
+      - "sirius-ccdb.lnls.br:172.18.0.5"
     entrypoint: /wait-for-it.sh
     command: naming-service-postgres:5432 -- /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
     networks:
       - postgres
 
   naming-service-postgres:
-    image: lnls/docker-naming-service-postgres:3.3.2-1
+    image: lnls/docker-naming-service-postgres:3.3.2-2
     ports:
       - "5432:5432"
     container_name: naming-service-postgres
