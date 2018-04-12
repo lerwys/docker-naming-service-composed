@@ -12,13 +12,14 @@ services:
         - 10.0.0.71
         - 10.0.0.72
     extra_hosts:
-      - "sirius-rbac-auth.lnls.br:172.18.0.3"
-      - "sirius-rbac.lnls.br:172.18.0.4"
-      - "sirius-ccdb.lnls.br:172.18.0.5"
+      - "sirius-rbac.lnls.br:172.60.0.3"
+      - "sirius-rbac-auth.lnls.br:172.60.0.4"
+      - "sirius-ccdb.lnls.br:172.60.0.5"
     entrypoint: /wait-for-it.sh
     command: naming-service-postgres:5432 -- /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
     networks:
-      - postgres
+      postgres:
+        ipv4_address: 172.60.0.6
 
   naming-service-postgres:
     image: lnls/docker-naming-service-postgres:3.4.0-1
@@ -28,7 +29,8 @@ services:
     volumes:
       - naming-service-postgres-volume:/var/lib/postgresql/data
     networks:
-      - postgres
+      postgres:
+        ipv4_address: 172.60.0.106
     env_file: env-vars/naming-service-postgres-vars.env
 
 volumes:
