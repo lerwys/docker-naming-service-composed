@@ -1,4 +1,4 @@
-version: '2'
+version: '3.4'
 services:
   naming-service-wildfly:
     image: lnls/docker-naming-service-wildfly:4.2.0-1
